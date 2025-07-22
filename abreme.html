@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Te amo Luz</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #f0f;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      font-size: 2em;
+      margin: 0;
+      overflow: hidden;
+    }
+    .message {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .heart {
+      position: absolute;
+      color: #f0f;
+      font-size: 2em;
+      animation: float 4s linear infinite;
+      opacity: 0.8;
+    }
+    @keyframes float {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="message">💖 Te amo Luz 💖</div>
+  <audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio HTML.
+  </audio>
+  <script>
+    function createMessage() {
+      const msg = document.createElement('div');
+      msg.className = 'message';
+      msg.innerText = '💖 Te amo Luz 💖';
+      msg.style.top = Math.random() * 80 + '%';
+      msg.style.left = Math.random() * 90 + '%';
+      document.body.appendChild(msg);
+      setTimeout(() => msg.remove(), 5000);
+    }
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.top = '100vh';
+      heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+
+    setInterval(createHeart, 300);
+
+    document.body.addEventListener('click', createMessage);
+  </script>
+</body>
+</html>
